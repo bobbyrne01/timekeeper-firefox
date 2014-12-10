@@ -1,0 +1,9 @@
+{
+  "name": "timekeeper-firefox",
+  "title": "Time Keeper",
+  "id": "jid1-XqHaE0E9M07EKQ",
+  "description": "Addon with stopwatch functionality",
+  "author": "Robert Byrne",
+  "license": "GNU GPL v3",
+  "version": "0.1"
+}
