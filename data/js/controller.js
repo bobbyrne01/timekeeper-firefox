@@ -16,22 +16,33 @@ window.addEventListener('click', function(event) {
 
 var TimeKeeper = {
 		
-		timerIntervalId: 0,
+		durationTimerIntervalId: 0,
+		notifyTimerIntervalId: 0,
 		startTime: null,
 		
 		startTimer: function() {
 			TimeKeeper.startTime = new Date();
 			
-			if (TimeKeeper.timerIntervalId){
-				clearInterval(TimeKeeper.timerIntervalId);
+			if (TimeKeeper.durationTimerIntervalId){
+				clearInterval(TimeKeeper.durationTimerIntervalId);
+				
+				if (document.getElementById('notifyFreq').selectedIndex != 0){
+					clearInterval(TimeKeeper.notifyTimerIntervalId);
+				}
 			}
 			
-			TimeKeeper.timerIntervalId = setInterval(TimeKeeper.timerUpdateUI, 1000);
+			TimeKeeper.durationTimerIntervalId = setInterval(TimeKeeper.durationTimerUpdateUI, 1000);
+			if (document.getElementById('notifyFreq').selectedIndex != 0){
+				TimeKeeper.notifyTimerIntervalId = setInterval(TimeKeeper.notify, document.getElementById('notifyFreq')[document.getElementById('notifyFreq').selectedIndex].value);
+			}
 		},
 		
 		stopTimer: function() {
 			
-			clearInterval(TimeKeeper.timerIntervalId);
+			clearInterval(TimeKeeper.durationTimerIntervalId);
+			if (document.getElementById('notifyFreq').selectedIndex != 0){
+				clearInterval(TimeKeeper.notifyTimerIntervalId);
+			}
 		},
 		
 		reset: function() {
@@ -40,7 +51,7 @@ var TimeKeeper = {
 			document.getElementById('duration').value = '00:00:00';
 		},
 		
-		timerUpdateUI: function() {
+		durationTimerUpdateUI: function() {
 			
 			var duration = TimeKeeper.diffBetweenTimes(
 					TimeKeeper.startTime, 
@@ -82,5 +93,14 @@ var TimeKeeper = {
 			}
 			
 			return timeTakenString;
+		},
+		
+		notify: function() {
+			
+			var duration = TimeKeeper.diffBetweenTimes(
+					TimeKeeper.startTime, 
+    				new Date());
+			
+			self.port.emit("notify", duration);			
 		}
 }
