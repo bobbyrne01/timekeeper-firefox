@@ -7,6 +7,10 @@ window.addEventListener('click', function(event) {
 	} else if (event.target.id.indexOf('stopButton') == 0){
 		
 		TimeKeeper.stopTimer();
+	
+	} else if (event.target.id.indexOf('resetButton') == 0){
+		
+		TimeKeeper.reset();
 	}	
 }, false);
 
@@ -28,6 +32,12 @@ var TimeKeeper = {
 		stopTimer: function() {
 			
 			clearInterval(TimeKeeper.timerIntervalId);
+		},
+		
+		reset: function() {
+			
+			TimeKeeper.stopTimer();
+			document.getElementById('duration').value = '00:00:00';
 		},
 		
 		timerUpdateUI: function() {
