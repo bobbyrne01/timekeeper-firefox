@@ -8,7 +8,7 @@ Firefox addon with stopwatch functionality
 * Start timer
 * Stop timer
 * Timer continues to count while Firefox is open.
-
+* Notifications can be scheduled
 
 ### Image attribution
 
