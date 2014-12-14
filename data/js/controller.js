@@ -19,6 +19,7 @@ var TimeKeeper = {
 		durationTimerIntervalId: 0,
 		notifyTimerIntervalId: 0,
 		startTime: null,
+		notificationSound: new Audio("../audio/notification.mp3"),
 		
 		startTimer: function() {
 			TimeKeeper.startTime = new Date();
@@ -101,6 +102,10 @@ var TimeKeeper = {
 					TimeKeeper.startTime, 
     				new Date());
 			
-			self.port.emit("notify", duration);			
+			self.port.emit("notify", duration);
+			
+			if (document.getElementById('audioCheckbox').checked){
+				TimeKeeper.notificationSound.play();
+			}
 		}
 }
