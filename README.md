@@ -1,6 +1,10 @@
 timekeeper-firefox
 ==================
 
+[![Build Status](https://travis-ci.org/bobbyrne01/timekeeper-firefox.svg?branch=master)](https://travis-ci.org/bobbyrne01/timekeeper-firefox)
+[![devDependency Status](https://david-dm.org/bobbyrne01/timekeeper-firefox/dev-status.svg)](https://david-dm.org/bobbyrne01/timekeeper-firefox#info=devDependencies)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 Firefox addon with stopwatch functionality
 
 ### Features
