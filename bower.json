@@ -1,0 +1,30 @@
+{
+  "name": "timekeeper-firefox",
+  "version": "0.3.0",
+  "homepage": "https://github.com/bobbyrne01/timekeeper-firefox",
+  "authors": [
+    "Robert Byrne"
+  ],
+  "description": "Addon with stopwatch functionality",
+  "main": "lib/main.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "[\"firefox\"",
+    "\"addon\"",
+    "\"time\"]"
+  ],
+  "license": "GNU GPL v3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "~1.11.2"
+  }
+}
