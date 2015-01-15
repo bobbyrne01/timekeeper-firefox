@@ -41,6 +41,10 @@ module.exports = function (grunt) {
 					preserveNewlines: true,
 					unformatted: ["a", "sub", "sup", "b", "i", "u"],
 					wrapLineLength: 0
+				},
+				css: {
+					indentChar: "\t",
+					indentSize: 1
 				}
 			}
 		},

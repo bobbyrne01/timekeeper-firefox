@@ -1,4 +1,7 @@
 $(function () {
+	// init buttons and inputs
+	$("#saveNewEvent, input:button, input:checkbox").button();
+
 	$("#tabs").tabs();
 	$("#datepicker").datepicker();
 });

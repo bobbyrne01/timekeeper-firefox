@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/style.css">
 	<title>Time Keeper</title>
 </head>
 
@@ -24,10 +25,6 @@
 					</td>
 					<td>
 						<input type="text" id="duration" size="10" value="00:00:00" disabled />
-					</td>
-				</tr>
-				<tr>
-					<td>
 					</td>
 					<td>
 						<input type="button" id="startButton" value="Start" />
@@ -52,17 +49,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label>Audio? </label>
-					</td>
-					<td>
-						<input id="audioCheckbox" type="checkbox" />
+					<td colspan="2">
+						<input id="audioCheckbox" type="checkbox">
+						<label for="audioCheckbox">Audio</label>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div id="timeUntilView">
-			<input type="text" id="datepicker">
+			<input placeholder="Event name" id="newEventName" type="text" />
+			<input placeholder="Event date" id="newEventDate" type="text" size="10" />
+			<button id="saveNewEvent">Save</button>
+
+			<div id="eventsContainer"></div>
 		</div>
 	</div>
 
