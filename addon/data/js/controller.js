@@ -1,11 +1,3 @@
-$(function () {
-	// init buttons and inputs
-	$("#saveNewEvent, input:button, input:checkbox").button();
-
-	$("#tabs").tabs();
-	$("#datepicker").datepicker();
-});
-
 window.addEventListener('click', function (event) {
 
 	if (event.target.id.indexOf('startButton') === 0) {

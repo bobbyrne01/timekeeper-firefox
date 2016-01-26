@@ -14,6 +14,12 @@ Firefox addon with stopwatch functionality
 * Timer continues to count while Firefox is open.
 * Notifications can be scheduled
 
+### Dev
+
+    npm install
+    npm install jpm --global
+    jpm run
+
 ### Image attribution
 
 https://www.iconfinder.com/icons/304418/alarm_clock_loading_stopwatch_time_timer_wait_icon
