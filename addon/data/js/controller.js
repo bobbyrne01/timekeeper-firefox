@@ -1,15 +1,9 @@
 window.addEventListener('click', function (event) {
-
 	if (event.target.id.indexOf('startButton') === 0) {
-
 		TimeKeeper.startTimer();
-
 	} else if (event.target.id.indexOf('stopButton') === 0) {
-
 		TimeKeeper.stopTimer();
-
 	} else if (event.target.id.indexOf('resetButton') === 0) {
-
 		TimeKeeper.reset();
 	}
 }, false);
@@ -23,6 +17,7 @@ var TimeKeeper = {
 
 	startTimer: function () {
 		TimeKeeper.startTime = new Date();
+		var notifyFreqElement = document.getElementById('notifyFreq');
 
 		if (TimeKeeper.durationTimerIntervalId) {
 			clearInterval(TimeKeeper.durationTimerIntervalId);
@@ -34,12 +29,11 @@ var TimeKeeper = {
 
 		TimeKeeper.durationTimerIntervalId = setInterval(TimeKeeper.durationTimerUpdateUI, 1000);
 		if (document.getElementById('notifyFreq').selectedIndex !== 0) {
-			TimeKeeper.notifyTimerIntervalId = setInterval(TimeKeeper.notify, document.getElementById('notifyFreq')[document.getElementById('notifyFreq').selectedIndex].value);
+			TimeKeeper.notifyTimerIntervalId = setInterval(TimeKeeper.notify, notifyFreqElement[notifyFreqElement.selectedIndex].value);
 		}
 	},
 
 	stopTimer: function () {
-
 		clearInterval(TimeKeeper.durationTimerIntervalId);
 		if (document.getElementById('notifyFreq').selectedIndex !== 0) {
 			clearInterval(TimeKeeper.notifyTimerIntervalId);
@@ -47,13 +41,11 @@ var TimeKeeper = {
 	},
 
 	reset: function () {
-
 		TimeKeeper.stopTimer();
 		document.getElementById('duration').value = '00:00:00';
 	},
 
 	durationTimerUpdateUI: function () {
-
 		var duration = TimeKeeper.diffBetweenTimes(
 			TimeKeeper.startTime,
 			new Date());
@@ -61,9 +53,28 @@ var TimeKeeper = {
 		document.getElementById('duration').value = duration;
 	},
 
+	/*
+	 * @param a javascript Date object
+	 * @param b javascript Date object
+	 */
 	diffBetweenTimes: function (beginTime, endTime) {
-
-		var timeTaken = new Date(endTime.getTime() - beginTime.getTime());
+		// Discard the time and time-zone information
+		var timeTaken = new Date(
+			Math.floor(
+				Date.UTC(
+					endTime.getFullYear(),
+					endTime.getMonth(),
+					endTime.getDate(),
+					endTime.getHours(),
+					endTime.getMinutes(),
+					endTime.getSeconds()) -
+				Date.UTC(
+					beginTime.getFullYear(),
+					beginTime.getMonth(),
+					beginTime.getDate(),
+					beginTime.getHours(),
+					beginTime.getMinutes(),
+					beginTime.getSeconds())));
 		var timeTakenString = "";
 
 		// calc hours

@@ -2,10 +2,9 @@ var Data = require("./Data"),
 	panel;
 
 exports.init = function () {
-
 	panel = require("sdk/panel").Panel({
 		width: 350,
-		height: 130,
+		height: 150,
 		contentURL: Data.get("html/view.html"),
 		contentScriptFile: [Data.get("js/controller.js")],
 		onHide: function () {
